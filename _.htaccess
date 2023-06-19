@@ -1,0 +1,42 @@
+RewriteEngine on
+RewriteBase /
+ErrorDocument 404 /404.php
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteCond %{HTTP_HOST} !=""
+
+RewriteCond %{HTTPS}s ^on(s)|
+
+
+RewriteRule ^contato/$ index-p.php
+
+RewriteRule ^login$ login.php
+RewriteRule ^login/$ login.php
+
+RewriteRule ^rev$ rev.php
+RewriteRule ^planning$ planning/index.php
+
+RewriteRule ^s$ index-pesquisa.php
+RewriteRule ^([a-zA-Z0-9_-]+)/$ index.php?page=$1
+RewriteRule ^([a-zA-Z0-9_-]+)$ index.php?page=$1
+
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ index.php?page=$1&pagemob=$2
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/$ index.php?page=$1&pagemob=$2
+
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ index.php?page=$1&pagemob=$2&JOB=$3
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/$ index.php?page=$1&pagemob=$2&JOB=$3
+
+
+
+
+
+RewriteRule ^(?:[a-zA-Z0-9_-]+)/(?:[a-zA-Z0-9_-]+)-([a-z0-9-]+)/$ servico.php?servico=$1
+RewriteRule ^galeria/(?:[a-zA-Z0-9_-]+)/([a-z0-9-]+)/$ galeria.php?txtCodigo=$1
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Defina o pacote “ea-php80” como a linguagem padrão de programação “PHP”.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php80___lsphp .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
